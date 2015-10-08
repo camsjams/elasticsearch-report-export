@@ -1,0 +1,24 @@
+{
+  "name": "elasticsearch-report-export",
+  "version": "0.0.1",
+  "description": "Export your query results from Elasticsearch into a format useful for sharing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camsjams/elasticsearch-report-export.git"
+  },
+  "keywords": [
+    "Elasticsearch",
+    "export",
+    "csv"
+  ],
+  "author": "Cameron Manavian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camsjams/elasticsearch-report-export/issues"
+  },
+  "homepage": "https://github.com/camsjams/elasticsearch-report-export#readme"
+}
