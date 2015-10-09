@@ -5,7 +5,14 @@ var argv = require('minimist')(process.argv.slice(2)),
         elastic: {
             host: 'localhost',
             port: 9200
-        }
+        },
+        hbs: {
+            extname: '.hbs',
+            defaultLayout: 'main'
+        },
+        formats: [
+            'csv'
+        ]
     };
 
 function getArguments() {

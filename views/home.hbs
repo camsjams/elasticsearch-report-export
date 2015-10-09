@@ -1,0 +1,13 @@
+<h2>Export Tool</h2>
+<form method="post" action="/export">
+    <textarea name="raw-query" placeholder="Enter raw JSON query for ES ..."></textarea>
+    <ul>
+        {{#each formats}}
+            <li>
+                <label for="format-{{this}}">{{this}}</label><input id="format-csv" type="radio" name="format"
+                                                                    value="{{this}}"/>
+            </li>
+        {{/each}}
+    </ul>
+    <input type="submit" value="submit"/>
+</form>
