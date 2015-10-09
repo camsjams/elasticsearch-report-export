@@ -1,5 +1,5 @@
 <h2>Export Tool</h2>
-<form method="post" action="/export">
+<form id="form-export" method="post" action="/export">
     <textarea name="raw-query" placeholder="Enter raw JSON query for ES ..."></textarea>
     <ul>
         {{#each formats}}
@@ -9,5 +9,11 @@
             </li>
         {{/each}}
     </ul>
+    <input type="submit" value="submit"/>
+</form>
+
+<h2>Report Tool</h2>
+<form id="form-report" method="post" action="/report">
+    <textarea name="raw-query" placeholder="Enter raw JSON query for ES ..."></textarea>
     <input type="submit" value="submit"/>
 </form>

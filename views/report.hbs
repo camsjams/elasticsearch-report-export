@@ -1,0 +1,32 @@
+<h2>Results</h2>
+{{#if errror}}
+    <h3>There was an error: {{error.message}}</h3>
+{{else}}
+    <h3>Total Hits: {{total}}</h3>
+    <h4>Query:</h4>
+    <pre>
+        {{query}}
+    </pre>
+    <table>
+        <thead>
+        {{#with items.[0]}}
+            <tr>
+                <th>#</th>
+                {{#each this._source}}
+                    <th>{{@key}}</th>
+                {{/each}}
+            </tr>
+        {{/with}}
+        </thead>
+        <tbody>
+        {{#each items}}
+            <tr>
+                <td>{{@index}}</td>
+                {{#each this._source}}
+                    <td>{{{ellipsis this 25}}}</td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{/if}}

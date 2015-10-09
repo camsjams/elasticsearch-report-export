@@ -1,12 +1,16 @@
 var config = require('./app/config'),
     express = require('express'),
-    hbs = require('express-handlebars'),
+    bodyParser = require('body-parser'),
+    view = require('./app/view'),
     app = express(),
     server;
 
-// init view
-app.engine('.hbs', hbs(config.hbs));
-app.set('view engine', '.hbs');
+function getController(name) {
+    return require('./app/controllers/' + name + 'Controller');
+}
+
+app.use(bodyParser.urlencoded({extended: false}));
+view.init(app, config);
 
 app.get('/', function (req, res) {
     res.render('home', {
@@ -29,12 +33,17 @@ app.get('/archive', function (req, res) {
     });
 });
 
-app.post('/export', function (req, res) {
-    res.render('export');
+app.post('/report', function (req, res) {
+    getController('Report').dispatch(req, res);
 });
 
-
-//app.use(express.static('public'));
+app.post('/export', function (req, res) {
+    var controller = getController('ExportController');
+    res.render(
+        'export',
+        controller.dispatch(req)
+    );
+});
 
 server = app.listen(config.port, function () {
     console.log('ERE listening at http://localhost:%s', server.address().port);

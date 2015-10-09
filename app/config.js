@@ -1,9 +1,11 @@
 const APP_NAME = 'ere';
-var config = require('rc')(APP_NAME, {
+
+var config = {
     port: 31337,
     elastic: {
-        host: 'localhost',
-        port: 9200
+        host: '192.168.216.240',
+        port: 9200,
+        log: 'info'
     },
     hbs: {
         extname: '.hbs',
@@ -12,6 +14,8 @@ var config = require('rc')(APP_NAME, {
     formats: [
         'csv'
     ]
-});
-console.log(config);
+};
+
+config = require('rc')(APP_NAME, config);
+
 module.exports = config;
