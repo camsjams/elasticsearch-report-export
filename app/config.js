@@ -3,7 +3,7 @@ const APP_NAME = 'ere';
 var config = {
     port: 31337,
     elastic: {
-        host: '192.168.216.240',
+        host: 'localhost',
         port: 9200,
         log: 'info'
     },
