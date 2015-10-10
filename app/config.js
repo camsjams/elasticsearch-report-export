@@ -5,7 +5,8 @@ var config = {
     elastic: {
         host: 'localhost',
         port: 9200,
-        log: 'info'
+        log: 'info',
+        pageSize: 600
     },
     hbs: {
         extname: '.hbs',

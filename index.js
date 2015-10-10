@@ -19,18 +19,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/archive', function (req, res) {
-    res.render('archive', {
-        items: [
-            {
-                name: '1.csv',
-                href: '/cache/1.csv'
-            },
-            {
-                name: '2.csv',
-                href: '/cache/2.csv'
-            }
-        ]
-    });
+    getController('Archive').dispatch(req, res);
 });
 
 app.post('/report', function (req, res) {
@@ -38,11 +27,7 @@ app.post('/report', function (req, res) {
 });
 
 app.post('/export', function (req, res) {
-    var controller = getController('ExportController');
-    res.render(
-        'export',
-        controller.dispatch(req)
-    );
+    getController('Export').dispatch(req, res);
 });
 
 server = app.listen(config.port, function () {
