@@ -4,7 +4,8 @@
   "description": "Export your query results from Elasticsearch into a format useful for sharing.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js --harmony"
   },
   "repository": {
     "type": "git",

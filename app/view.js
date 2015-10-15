@@ -28,7 +28,6 @@ function getString(input) {
  * @return {String}          The truncated string.
  */
 function ellipsis(str, limit, append) {
-    console.log(typeof str);
     if (typeof append !== 'string') {
         append = '&hellip;';
     }

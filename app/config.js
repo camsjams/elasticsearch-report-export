@@ -6,6 +6,7 @@ var config = {
         host: 'localhost',
         port: 9200,
         log: 'info',
+        scrollTime: '30s',
         pageSize: 600
     },
     hbs: {
