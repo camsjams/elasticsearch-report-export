@@ -2,6 +2,7 @@ const APP_NAME = 'ere';
 
 var config = {
     port: 31337,
+    outputDirectory: __dirname + '/../cache/',
     elastic: {
         host: 'localhost',
         port: 9200,
