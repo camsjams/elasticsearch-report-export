@@ -1,7 +1,7 @@
 const TEMPLATE = 'export';
 
 var elasticsearch = require('elasticsearch'),
-    exp = require('../services/Export'),
+    exp = require('../services/ExportService'),
     md5 = require('md5'),
     config = require('../config');
 
