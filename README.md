@@ -15,18 +15,26 @@ Coming soon
 
 ## Roadmap
 
-### version 0.0.1
+### version 0.1.0
 * Export to csv
 * Mappings to csv columns
-
-### version 0.6.0
 * Support for index selection at runtime
 
+### version 0.2.0
+* TBD
+### version 0.3.0
+* TBD
+### version 0.4.0
+* TBD
+
+### version 0.5.0
+* Custom output file name
+
 ### version 0.6.0
-* Export to JSON
+* Drop support for anything below Node 4.0.0
 
 ### version 0.7.0
-* Custom output file name
+* Export to JSON
 
 ### version 0.8.0
 * Better control over report files

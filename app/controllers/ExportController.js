@@ -17,34 +17,42 @@ function exportData(model, expSvc) {
         log: config.elastic.log
     });
 
-    expSvc.createWriteStream(config.outputDirectory + model.filename);
-
-    client.search({
-        index: 'stm_v6',
-        scroll: config.elastic.scrollTime,
-        search_type: 'scan',
-        body: model.query
-    }, function getMoreUntilDone(error, response) {
-        // collect the title from each response
-        response.hits.hits.forEach(function (hit) {
-            expSvc.write(hit._source.title);
-        });
-        if (response.hits.total > expSvc.getTotal()) {
-            console.log('exportData completed', expSvc.length);
-            // now we can call scroll over and over
-            client.scroll({
-                scrollId: response._scroll_id,
-                scroll: config.elastic.scrollTime
-            }, getMoreUntilDone);
-        } else {
-            console.log('exportData completed', expSvc.getTotal());
-            expSvc.end();
+    client.indices.getMapping(
+        {
+            index: model.indexName,
+            type: model.typeName
         }
-    });
+        , function (err, mapping) {
+            // todo null check/error check
+            expSvc.createWriteStream(
+                config.outputDirectory + model.filename,
+                Object.keys(mapping[model.indexName].mappings[model.typeName].properties)
+            );
+            // todo switch to promise
+            client.search({
+                index: model.indexName,
+                scroll: config.elastic.scrollTime,
+                search_type: 'scan',
+                body: model.query
+            }, function getMoreUntilDone(error, response) {
+                response.hits.hits.forEach(function (hit) {
+                    expSvc.write(hit._source);
+                });
+                if (response.hits.total > expSvc.getTotal()) {
+                    client.scroll({
+                        scrollId: response._scroll_id,
+                        scroll: config.elastic.scrollTime
+                    }, getMoreUntilDone);
+                } else {
+                    console.log('exportData completed', expSvc.getTotal());
+                    expSvc.end();
+                }
+            });
+        });
 }
 
 function dispatchRequest(req, res) {
-    var rawQuery = req.body['raw-query'],
+    var rawQuery = req.body.rawQuery,
         format = req.body.format,
         exportService = exp[format] ? exp[format]() : null,
         query = JSON.parse(rawQuery),
@@ -53,6 +61,8 @@ function dispatchRequest(req, res) {
     model = {
         filename: getFileName(rawQuery, format),
         rawQuery: rawQuery,
+        indexName: req.body.indexName,
+        typeName: req.body.typeName,
         query: query
     };
 
