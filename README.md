@@ -17,18 +17,21 @@ Coming soon
 
 ### version 0.0.1
 * Export to csv
-* Mappings to filename
+* Mappings to csv columns
 
-### version 0.2.0
+### version 0.6.0
+* Support for index selection at runtime
+
+### version 0.6.0
 * Export to JSON
 
-### version 0.3.0
+### version 0.7.0
 * Custom output file name
 
-### version 0.4.0
+### version 0.8.0
 * Better control over report files
 
-### version 0.5.0
+### version 0.9.0
 * Progress indicator
 
 ### version 1.0.0 features
