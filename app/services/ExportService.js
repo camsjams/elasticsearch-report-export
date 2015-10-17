@@ -29,16 +29,13 @@ var CSVExporter = (function () {
     function write(data) {
         var output = {};
         total++;
-        console.log('write', data);
         for (var k in fields) {
             var fieldName = fields[k];
-            console.log('fieldName', fieldName);
             if (data[fieldName]) {
-                console.log('data[fieldName]', data[fieldName]);
                 output[fieldName] = data[fieldName];
             }
         }
-        //csvStream.write(output);
+        csvStream.write(output);
     }
 
     function getTotal() {
