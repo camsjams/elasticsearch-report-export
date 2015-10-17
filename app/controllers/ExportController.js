@@ -2,6 +2,7 @@ const TEMPLATE = 'export';
 
 var elasticsearch = require('elasticsearch'),
     exp = require('../services/ExportService'),
+    mapServ = require('../services/MappingService'),
     md5 = require('md5'),
     config = require('../config');
 
@@ -17,18 +18,12 @@ function exportData(model, expSvc) {
         log: config.elastic.log
     });
 
-    client.indices.getMapping(
-        {
-            index: model.indexName,
-            type: model.typeName
-        }
-        , function (err, mapping) {
-            // todo null check/error check
+    mapServ.getMapping(model.indexName, model.typeName)
+        .then(function (fieldMap) {
             expSvc.createWriteStream(
                 config.outputDirectory + model.filename,
-                Object.keys(mapping[model.indexName].mappings[model.typeName].properties)
+                fieldMap
             );
-            // todo switch to promise
             client.search({
                 index: model.indexName,
                 scroll: config.elastic.scrollTime,
