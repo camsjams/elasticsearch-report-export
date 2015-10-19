@@ -1,0 +1,27 @@
+<h2>Export Tool</h2>
+<form id="form-export" method="post" action="/export">
+    <textarea name="rawQuery" placeholder="Enter raw JSON query for ES ..."></textarea>
+    <label for="index-name">Index Name</label>
+    <input id="index-name" type="text" name="indexName" placeholder="Enter index name"/>
+    <label for="type-name">Type Name</label>
+    <input id="type-name" type="text" name="typeName" placeholder="Enter type name"/>
+    <ul>
+        {{#each formats}}
+            <li>
+                <label for="format-{{this}}">{{this}}</label><input id="format-csv" type="radio" name="format"
+                                                                    value="{{this}}"/>
+            </li>
+        {{/each}}
+    </ul>
+    <input type="submit" value="submit"/>
+</form>
+
+<h2>Report Tool</h2>
+<form id="form-report" method="post" action="/report">
+    <textarea name="rawQuery" placeholder="Enter raw JSON query for ES ..."></textarea>
+    <label for="index-name">Index Name</label>
+    <input id="index-name" type="text" name="indexName" placeholder="Enter index name"/>
+    <label for="type-name">Type Name</label>
+    <input id="type-name" type="text" name="typeName" placeholder="Enter type name"/>
+    <input type="submit" value="submit"/>
+</form>

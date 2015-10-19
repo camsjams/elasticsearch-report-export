@@ -1,0 +1,10 @@
+<h2>Generating export</h2>
+{{#if errror}}
+    <h3>There was an error: {{error.message}}</h3>
+{{else}}
+    <h3>Filename: {{filename}}</h3>
+    <h4>Query:</h4>
+    <pre>{{~rawQuery~}}</pre>
+    <h4>Index:</h4>
+    <pre>{{~indexName~}}</pre>
+{{/if}}
