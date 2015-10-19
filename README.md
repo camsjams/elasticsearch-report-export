@@ -22,8 +22,10 @@ Coming soon
 
 ### version 0.2.0
 * TBD
+
 ### version 0.3.0
 * TBD
+
 ### version 0.4.0
 * TBD
 
@@ -31,19 +33,19 @@ Coming soon
 * Custom output file name
 
 ### version 0.6.0
-* Drop support for anything below Node 4.0.0
+* Export to JSON
 
 ### version 0.7.0
-* Export to JSON
+* Export to XML
 
 ### version 0.8.0
 * Better control over report files
 
 ### version 0.9.0
-* Progress indicator
+* Progress indicator, perhaps queue system
 
 ### version 1.0.0 features
-* TBD
+* Drop support for anything below Node 4.0.0
 
 ### version 1.1.0
 * Export to callback url (postback to server)
