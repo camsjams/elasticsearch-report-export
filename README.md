@@ -1,7 +1,7 @@
 # Elasticsearch report export (ERE)
 Export your query results from Elasticsearch into a format useful for sharing, such as CSV
 
-## Current Version 0.0.1
+## Current Version 0.1.0
 
 ## Platforms / Technologies
 * [nodejs](http://nodejs.org/)
