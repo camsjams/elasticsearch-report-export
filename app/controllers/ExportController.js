@@ -43,6 +43,8 @@ function exportData(model, expSvc) {
                     expSvc.end();
                 }
             });
+        }).catch(function () {
+            console.log('getMapping catch', arguments);
         });
 }
 

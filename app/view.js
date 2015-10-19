@@ -1,4 +1,6 @@
-var exphbs = require('express-handlebars');
+var exphbs = require('express-handlebars'),
+    tagOpenCache = {},
+    tagCloseCache = {};
 
 function getString(input) {
     switch (typeof input) {
@@ -16,6 +18,42 @@ function getString(input) {
             break;
     }
     return input;
+}
+
+function getTagOpener(tag) {
+    if (!tagOpenCache[tag]) {
+        tagOpenCache[tag] = '<' + tag + '>';
+    }
+    return tagOpenCache[tag];
+}
+
+function getTagCloser(tag) {
+    if (!tagCloseCache[tag]) {
+        tagCloseCache[tag] = '</' + tag + '>';
+    }
+    return tagCloseCache[tag];
+}
+
+/**
+ * {{{printWithKeys source keys "td"}}}
+ * @author: Cameron Manavian
+ * Return listing of source object using mapping keys, inside element of string type tag
+ * @param  {Object} source      The input object
+ * @param  {Object} keys        The whitelist of keys
+ * @param  {String} tag         The tag name to wrap each item in
+ * @return {String}             The html output string.
+ */
+function printWithKeys(source, keys, tag) {
+    var output = '';
+    for (var i in keys) {
+        var fieldName = keys[i];
+        if (source[fieldName]) {
+            output += getTagOpener(tag) + source[fieldName] + getTagCloser(tag);
+        } else {
+            output += getTagOpener(tag) + '--' + getTagCloser(tag);
+        }
+    }
+    return output;
 }
 
 /**
@@ -53,6 +91,7 @@ function init(app, config) {
     var hbConfig = config.hbs;
     hbConfig.helpers = {
         ellipsis: ellipsis,
+        printWithKeys: printWithKeys,
         debug: debug
     };
     app.engine('.hbs', exphbs(hbConfig));
