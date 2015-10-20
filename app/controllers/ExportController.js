@@ -39,7 +39,7 @@ function exportData(model, expSvc) {
                         scroll: config.elastic.scrollTime
                     }, getMoreUntilDone);
                 } else {
-                    console.log('exportData completed', expSvc.getTotal());
+                    console.log('exportData completed: ' + expSvc.getTotal() + ' items.');
                     expSvc.end();
                 }
             });
