@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var Exporter = (function () {
+module.exports = (function () {
 
     var csv = require('fast-csv'),
         total = 0,
@@ -49,7 +49,3 @@ var Exporter = (function () {
         write: write
     }
 });
-
-module.exports = {
-    exporter: Exporter
-};

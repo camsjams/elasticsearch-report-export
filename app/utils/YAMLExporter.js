@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var Exporter = (function () {
+module.exports = (function () {
 
     var total = 0;
 
@@ -11,6 +11,7 @@ var Exporter = (function () {
     }
 
     function write(data) {
+        total++;
     }
 
     function getTotal() {
@@ -24,7 +25,3 @@ var Exporter = (function () {
         write: write
     }
 });
-
-module.exports = {
-    exporter: Exporter
-};
