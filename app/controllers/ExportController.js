@@ -31,7 +31,7 @@ function exportData(model, expSvc) {
                 body: model.query
             }, function getMoreUntilDone(error, response) {
                 response.hits.hits.forEach(function (hit) {
-                    expSvc.write(hit._source);
+                    expSvc.write(hit._source ? hit._source : hit.fields);
                 });
                 if (response.hits.total > expSvc.getTotal()) {
                     client.scroll({
@@ -39,12 +39,12 @@ function exportData(model, expSvc) {
                         scroll: config.elastic.scrollTime
                     }, getMoreUntilDone);
                 } else {
-                    console.log('exportData completed', expSvc.getTotal());
+                    console.log('exportData completed: ' + expSvc.getTotal() + ' items.');
                     expSvc.end();
                 }
             });
-        }).catch(function () {
-            console.log('getMapping catch', arguments);
+        }).catch(function (err) {
+            console.log('exportData catch', err, model);
         });
 }
 

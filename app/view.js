@@ -43,12 +43,13 @@ function getTagCloser(tag) {
  * @param  {String} tag         The tag name to wrap each item in
  * @return {String}             The html output string.
  */
-function printWithKeys(source, keys, tag) {
-    var output = '';
+function printWithKeys(item, keys, tag) {
+    var output = '',
+        data = item._source ? item._source : item.fields;
     for (var i in keys) {
         var fieldName = keys[i];
-        if (source[fieldName]) {
-            output += getTagOpener(tag) + source[fieldName] + getTagCloser(tag);
+        if (data[fieldName]) {
+            output += getTagOpener(tag) + data[fieldName] + getTagCloser(tag);
         } else {
             output += getTagOpener(tag) + '--' + getTagCloser(tag);
         }
