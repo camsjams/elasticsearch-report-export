@@ -5,6 +5,8 @@ Export your query results from Elasticsearch into a format useful for sharing, s
 * YAML
 * More coming soon ...
 
+Currently elasticsearch-report-export supports NodeJS 0.12.7+. 
+
 ## Current Version 0.2.0
 
 ## Platforms / Technologies
@@ -17,7 +19,7 @@ Export your query results from Elasticsearch into a format useful for sharing, s
 ## Options and Arguments
 Coming soon
 
-## Roadmap
+## Feature Roadmap (un-released features subject to change)
 
 ### version 0.1.0
 * Export to csv
@@ -48,8 +50,8 @@ Coming soon
 ### version 0.9.0
 * Progress indicator, perhaps queue system
 
-### version 1.0.0 features
-* Drop support for anything below Node 4.0.0
+### version 1.0.0
+* Potentially drop support for anything below Node 4.0.0
 
 ### version 1.1.0
 * Export to callback url (postback to server)
