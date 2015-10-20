@@ -31,7 +31,7 @@ Coming soon
 * TBD
 
 ### version 0.4.0
-* TBD
+* Unit test
 
 ### version 0.5.0
 * Custom output file name
