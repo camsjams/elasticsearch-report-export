@@ -15,7 +15,8 @@ var config = {
         defaultLayout: 'main'
     },
     formats: [
-        'csv'
+        'csv',
+        'yaml'
     ]
 };
 

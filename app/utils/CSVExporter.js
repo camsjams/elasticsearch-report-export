@@ -6,24 +6,24 @@ module.exports = (function () {
         total = 0,
         fields = 0,
         filename,
-        csvStream;
+        writeStream;
 
     function createWriteStream(outputFile, rootKeys) {
         console.log('outputFile:', outputFile);
         fields = rootKeys;
         filename = outputFile;
-        csvStream = csv.createWriteStream({headers: true});
+        writeStream = csv.createWriteStream({headers: true});
 
         var writableStream = fs.createWriteStream(filename);
         writableStream.on("finish", function () {
             console.log("DONE!");
         });
 
-        csvStream.pipe(writableStream);
+        writeStream.pipe(writableStream);
     }
 
     function end() {
-        csvStream.end();
+        writeStream.end();
     }
 
     function write(data) {
@@ -35,7 +35,7 @@ module.exports = (function () {
                 output[fieldName] = data[fieldName];
             }
         }
-        csvStream.write(output);
+        writeStream.write(output);
     }
 
     function getTotal() {
