@@ -5,7 +5,7 @@ Export your query results from Elasticsearch into a format useful for sharing, s
 * YAML
 * More coming soon ...
 
-## Current Version 0.1.0
+## Current Version 0.2.0
 
 ## Platforms / Technologies
 * [nodejs](http://nodejs.org/)
@@ -31,7 +31,7 @@ Coming soon
 * TBD
 
 ### version 0.4.0
-* TBD
+* Unit test
 
 ### version 0.5.0
 * Custom output file name
