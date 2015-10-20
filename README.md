@@ -1,5 +1,9 @@
 # Elasticsearch report export (ERE)
-Export your query results from Elasticsearch into a format useful for sharing, such as CSV
+Export your query results from Elasticsearch into a format useful for sharing, such as:
+
+* CSV
+* YAML
+* More coming soon ...
 
 ## Current Version 0.1.0
 
