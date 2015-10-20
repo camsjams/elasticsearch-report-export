@@ -28,6 +28,7 @@ module.exports = (function () {
                 output[fieldName] = data[fieldName];
             }
         }
+        output = [output];
         writeStream.write(yaml.dump(output));
     }
 
