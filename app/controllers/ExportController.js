@@ -31,7 +31,7 @@ function exportData(model, expSvc) {
                 body: model.query
             }, function getMoreUntilDone(error, response) {
                 response.hits.hits.forEach(function (hit) {
-                    expSvc.write(hit._source);
+                    expSvc.write(hit._source ? hit._source : hit.fields);
                 });
                 if (response.hits.total > expSvc.getTotal()) {
                     client.scroll({
