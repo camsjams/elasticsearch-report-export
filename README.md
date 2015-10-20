@@ -21,7 +21,7 @@ Coming soon
 * Support for index selection at runtime
 
 ### version 0.2.0
-* TBD
+* Export to YAML
 
 ### version 0.3.0
 * TBD
